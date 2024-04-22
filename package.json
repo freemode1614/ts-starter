@@ -1,0 +1,19 @@
+{
+  "name": "ts-starter",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@moccona/eslint-config": "^0.1.10",
+    "@moccona/prettierrc": "^0.0.2",
+    "tsup": "^8.0.2"
+  }
+}
