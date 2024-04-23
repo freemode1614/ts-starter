@@ -9,14 +9,28 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "exports": {
+    "./package.json": "./package.json",
+    "./*": {
+      "import": "./npm/*.js",
+      "require": "./npm/*.cjs",
+      "types": "./npm/*.d.ts"
+    },
+    ".": {
+      "import": "./npm/index.js",
+      "require": "./npm/index.cjs",
+      "types": "./npm/index.d.ts"
+    }
+  },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "@moccona/eslint-config": "^0.1.10",
     "@moccona/prettierrc": "^0.0.2",
     "@types/node": "^20.12.7",
     "cross-env": "^7.0.3",
-    "tsup": "^8.0.2"
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
   },
   "prettier": "@moccona/prettierrc"
 }
