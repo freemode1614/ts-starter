@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"names":[],"mappings":";AAAO,IAAM,IAAI;AACV,IAAM,IAAI","sourcesContent":["export const a = \"a\";\nexport const b = \"b\";\n"]}

@@ -4,7 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "tsup --watch"
+    "dev": "cross-env NODE_ENV=development tsup --watch",
+    "build": "cross-env NODE_ENV=production tsup"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,9 @@
     "@changesets/cli": "^2.27.1",
     "@moccona/eslint-config": "^0.1.10",
     "@moccona/prettierrc": "^0.0.2",
+    "@types/node": "^20.12.7",
+    "cross-env": "^7.0.3",
     "tsup": "^8.0.2"
-  }
+  },
+  "prettier": "@moccona/prettierrc"
 }
