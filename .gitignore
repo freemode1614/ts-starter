@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # chnagesets
-.chnagesets/
+.changesets/
