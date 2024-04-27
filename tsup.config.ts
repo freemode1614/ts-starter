@@ -9,5 +9,6 @@ export default defineConfig([
     sourcemap: true,
     clean: process.env.NODE_ENV === "production",
     treeshake: true,
+    shims: true,
   },
 ]);
