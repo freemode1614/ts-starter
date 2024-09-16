@@ -6,5 +6,5 @@ var b = "b";
 
 exports.a = a;
 exports.b = b;
-//# sourceMappingURL=out.js.map
+//# sourceMappingURL=index.cjs.map
 //# sourceMappingURL=index.cjs.map
