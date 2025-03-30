@@ -1,7 +1,7 @@
 {
   "name": "ts-starter",
   "version": "0.0.0",
-  "description": "",
+  "description": "Project starter for TypeScript",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -27,20 +27,20 @@
     }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.12",
-    "@moccona/eslint-config": "^0.4.0",
+    "@changesets/cli": "^2.28.1",
+    "@moccona/eslint-config": "^0.4.2",
     "@moccona/preset-config": "^0.0.5",
-    "@types/node": "^20.17.17",
+    "@types/node": "^20.17.28",
     "cross-env": "^7.0.3",
-    "eslint": "^9.19.0",
-    "prettier": "^3.4.2",
-    "tsup": "^8.3.6",
-    "typescript": "^5.7.3",
+    "eslint": "^9.23.0",
+    "prettier": "^3.5.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "prettier": "@moccona/preset-config/prettierrc",
   "packageManager": "pnpm@9.7.1",
   "dependencies": {
-    "vitest": "^2.1.9"
+    "vitest": "^3.0.9"
   }
 }

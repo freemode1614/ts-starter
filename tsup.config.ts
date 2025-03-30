@@ -10,15 +10,6 @@ export default defineConfig([
     clean: process.env.NODE_ENV === "production",
     treeshake: true,
     shims: true,
+    env: {},
   },
-  // {
-  //   entry: ["./src/index.ts"],
-  //   outDir: "./npm",
-  //   dts: true,
-  //   format: ["cjs"],
-  //   sourcemap: true,
-  //   clean: process.env.NODE_ENV === "production",
-  //   treeshake: true,
-  //   shims: true,
-  // },
 ]);
