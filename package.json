@@ -7,11 +7,11 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsup --watch",
+    "dev": "tsup --watch",
     "build": "cross-env NODE_ENV=production tsup"
   },
   "keywords": [],
-  "author": "",
+  "author": "freemode1614",
   "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
@@ -26,6 +26,9 @@
       "require": "./npm/index.cjs"
     }
   },
+  "dependencies": {
+    "vitest": "^3.0.9"
+  },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
     "@moccona/eslint-config": "^0.4.2",
@@ -39,8 +42,5 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "prettier": "@moccona/preset-config/prettierrc",
-  "packageManager": "pnpm@9.7.1",
-  "dependencies": {
-    "vitest": "^3.0.9"
-  }
+  "packageManager": "pnpm@9.7.1"
 }
