@@ -1,5 +1,11 @@
 # ts-starter
 
+<!--toc:start-->
+
+- [ts-starter](#ts-starter)
+  - [Usage](#usage)
+  <!--toc:end-->
+
 The project provides a set of tools to simplify your TypeScript development workflow, including dependency management, code formatting, testing, and publishing.
 
 ## Usage
