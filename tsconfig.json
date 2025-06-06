@@ -1,8 +1,8 @@
 {
   "extends": "@moccona/preset-config/tsconfig/node.json",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
