@@ -1,11 +1,16 @@
 {
   "name": "ts-starter",
   "version": "0.0.0",
+  "author": "freemode1614 <freemode1614@outlook.com>",
   "description": "Project starter for TypeScript",
+  "license": "MIT",
   "type": "module",
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "npm"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsup --watch",
     "build": "cross-env NODE_ENV=production tsup",
@@ -19,8 +24,6 @@
     "typescript library",
     "typescript library template"
   ],
-  "author": "freemode1614",
-  "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
     "./*": {
@@ -45,5 +48,8 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
-  "packageManager": "pnpm@10.9.0"
+  "packageManager": "pnpm@10.9.0",
+  "resolutions": {
+    "rolldown": "npm:@rolldown/browser@latest"
+  }
 }
