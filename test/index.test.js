@@ -1,5 +1,4 @@
-import { it } from "vitest";
-import { describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 describe("index test case", () => {
   it("1 + 1 should equals to 2");

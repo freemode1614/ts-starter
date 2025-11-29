@@ -10,7 +10,9 @@
     "dev": "cross-env NODE_ENV=development tsup --watch",
     "build": "cross-env NODE_ENV=production tsup",
     "test": "cross-env NODE_ENV=test vitest --watch=false",
-    "fmt": "biome format --write"
+    "fmt": "biome format --write",
+    "lint": "biome lint --write",
+    "check": "biome check"
   },
   "keywords": [
     "ts-starter",

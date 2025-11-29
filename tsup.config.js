@@ -6,7 +6,7 @@ export default defineConfig([
     outDir: "./npm",
     dts: true,
     format: "esm",
-    sourcemap: true,
+    sourcemap: process.env.NODE_ENV !== "production",
     clean: process.env.NODE_ENV === "production",
     treeshake: true,
     shims: false,
