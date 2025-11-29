@@ -11,19 +11,19 @@
   "files": [
     "npm"
   ],
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development tsup --watch",
-    "build": "cross-env NODE_ENV=production tsup",
-    "test": "cross-env NODE_ENV=test vitest --watch=false",
-    "fmt": "biome format --write",
-    "lint": "biome lint --write",
-    "check": "biome check"
-  },
   "keywords": [
     "ts-starter",
     "typescript library",
     "typescript library template"
   ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "vitest --watch=false",
+    "fmt": "biome format --write",
+    "lint": "biome lint --write",
+    "check": "biome check"
+  },
   "exports": {
     "./package.json": "./package.json",
     "./*": {
@@ -42,14 +42,10 @@
     "@changesets/cli": "^2.29.8",
     "@moccona/preset-config": "^0.0.5",
     "@types/node": "^22.19.1",
-    "cross-env": "^10.1.0",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
-  "packageManager": "pnpm@10.9.0",
-  "resolutions": {
-    "rolldown": "npm:@rolldown/browser@latest"
-  }
+  "packageManager": "pnpm@10.9.0"
 }
