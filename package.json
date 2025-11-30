@@ -5,6 +5,7 @@
   "description": "Project starter for TypeScript",
   "license": "MIT",
   "type": "module",
+  "audits": true,
   "publishConfig": {
     "access": "public"
   },
@@ -19,10 +20,13 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup --minify",
-    "test": "vitest --watch=false",
+    "test": "npm run test:unit && npm run test:coverage",
+    "test:unit": "vitest --watch=false",
+    "test:coverage": "vitest run --coverage",
     "fmt": "biome format --write",
     "lint": "biome lint --write",
-    "check": "biome check"
+    "check": "biome check",
+    "prepare": "husky"
   },
   "exports": {
     "./package.json": "./package.json",
@@ -42,10 +46,27 @@
     "@changesets/cli": "^2.29.8",
     "@moccona/preset-config": "^0.0.5",
     "@types/node": "^22.19.1",
+    "@vitest/coverage-istanbul": "3.2.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
-  "packageManager": "pnpm@10.9.0"
+  "packageManager": "pnpm@10.9.0",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "biome format --check",
+      "git add"
+    ],
+    "src/**/*": [
+      "git add"
+    ]
+  }
 }
