@@ -5,8 +5,8 @@
 ## 特性
 
 - 🚀 **TypeScript 5** - 最新的 TypeScript 支持，严格类型检查
-- 📦 **双模式构建** - 同时输出 ESM 和 CommonJS 格式
-- 🎯 **零配置工具链** - tsup + Vitest + Biome，开箱即用
+- 📦 **ESM 构建** - 现代化 ES Module 输出
+- 🎯 **零配置工具链** - tsdown + Vitest + Biome，开箱即用
 - 🔄 **Changesets 集成** - 自动化版本管理和发布
 - 📁 **子路径导出** - 支持 `your-lib/utils` 这样的导入方式
 - 🧪 **Vitest 测试** - 快速、现代的测试框架
@@ -59,12 +59,11 @@ my-lib/
 ├── test/                   # 测试目录
 │   └── index.test.ts       # 单元测试文件
 ├── npm/                    # 构建输出目录（自动生成）
-│   ├── index.js            # ESM 构建产物
-│   ├── index.cjs           # CJS 构建产物
-│   └── index.d.ts          # 类型声明文件
+│   ├── index.mjs           # ESM 构建产物
+│   └── index.d.mts         # 类型声明文件
 ├── package.json            # 项目配置
 ├── tsconfig.json           # TypeScript 配置
-├── tsup.config.js          # 构建配置
+├── tsdown.config.js        # 构建配置
 ├── vitest.config.js        # 测试配置
 ├── biome.json              # 代码规范配置
 └── .changeset/             # Changeset 配置
@@ -73,7 +72,7 @@ my-lib/
 ## 技术栈
 
 - [TypeScript](https://www.typescriptlang.org/) - 类型安全的 JavaScript
-- [tsup](https://github.com/egoist/tsup) - 零配置 TypeScript 打包器
+- [tsdown](https://github.com/rolldown/tsdown) - 基于 Rolldown 的 TypeScript 打包器
 - [Vitest](https://vitest.dev/) - 下一代测试框架
 - [Biome](https://biomejs.dev/) - 快速、统一的 linter 和 formatter
 - [Changesets](https://github.com/changesets/changesets) - 版本管理和发布工具
@@ -113,14 +112,12 @@ import { bar } from 'your-lib/utils';
 {
   "exports": {
     ".": {
-      "types": "./npm/index.d.ts",
-      "import": "./npm/index.js",
-      "require": "./npm/index.cjs"
+      "types": "./npm/index.d.mts",
+      "import": "./npm/index.mjs"
     },
     "./*": {
-      "types": "./npm/*.d.ts",
-      "import": "./npm/*.js",
-      "require": "./npm/*.cjs"
+      "types": "./npm/*.d.mts",
+      "import": "./npm/*.mjs"
     }
   }
 }
@@ -136,18 +133,25 @@ import { bar } from 'your-lib/utils';
 
 ### 修改构建配置
 
-编辑 `tsup.config.js`：
+编辑 `tsdown.config.js`：
 
 ```javascript
-export default {
-  entry: ['src/index.ts', 'src/utils.ts'],  // 添加新的入口
-  format: ['esm', 'cjs'],
-  dts: true,
-  splitting: true,
-  sourcemap: true,
-  clean: true,
-  outDir: 'npm',
-};
+import { defineConfig } from "tsdown";
+
+export default defineConfig((config) => {
+  return [
+    {
+      entry: ["./src/index.ts"],
+      outDir: "./npm",
+      dts: true,
+      format: "esm",
+      sourcemap: config.sourcemap,
+      clean: config.sourcemap,
+      treeshake: true,
+      shims: false,
+    },
+  ];
+});
 ```
 
 ## 许可证

@@ -100,3 +100,14 @@ export function sleep(ms: number): Promise<void> {
  * Math utilities (using path alias @/)
  */
 export { add, multiply } from "@/utils/math.js";
+
+/**
+ * Type utilities
+ */
+export type {
+  Nullable,
+  Fn,
+  AsyncFn,
+  DeepPartial,
+  DeepReadonly,
+} from "@/types.js";
