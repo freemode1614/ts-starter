@@ -9,9 +9,9 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsup --watch",
-    "build": "cross-env NODE_ENV=production tsup",
-    "test": "cross-env NODE_ENV=test vitest --watch=false",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "test": "vitest --watch=false",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write ."
@@ -24,24 +24,21 @@
   "exports": {
     "./package.json": "./package.json",
     "./*": {
-      "types": "./npm/*.d.ts",
-      "import": "./npm/*.js",
-      "require": "./npm/*.cjs"
+      "types": "./npm/*.d.mts",
+      "import": "./npm/*.mjs"
     },
     ".": {
-      "types": "./npm/index.d.ts",
-      "import": "./npm/index.js",
-      "require": "./npm/index.cjs"
+      "types": "./npm/index.d.mts",
+      "import": "./npm/index.mjs"
     }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.4",
     "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.29.4",
+    "@rollup/plugin-alias": "^6.0.0",
     "@types/node": "^20.17.50",
-    "cross-env": "^7.0.3",
-    "tsup": "^8.5.0",
+    "tsdown": "0.21.0-beta.2",
     "typescript": "^5.8.3",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@10.9.0"

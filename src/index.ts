@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * String utilities
  */
@@ -81,6 +80,10 @@ export function isDefined<T>(value: T | null | undefined): value is T {
 }
 
 /**
+ * Async utilities
+ */
+
+/**
  * Sleep for a specified duration
  * @param ms - The duration in milliseconds
  * @returns A promise that resolves after the duration
@@ -92,15 +95,8 @@ export function isDefined<T>(value: T | null | undefined): value is T {
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-=======
-import fs from "node:fs";
-import nodePath from "node:path";
 
-const from_file = nodePath.resolve(process.cwd(), "./package.json");
-const target_file = nodePath.resolve(process.cwd(), "./src/a.json");
-
-const w_s = fs.createReadStream(from_file, "utf-8");
-const r_s = fs.createWriteStream(target_file);
-
-w_s.pipe(r_s);
->>>>>>> 1e861090e35e8ad596b4d345a41bd68fe6975129
+/**
+ * Math utilities (using path alias @/)
+ */
+export { add, multiply } from "@/utils/math.js";

@@ -1,160 +1,155 @@
-# TypeScript Starter
+# ts-starter
 
-A modern, minimal TypeScript project scaffolded with modern tooling for development, testing, and production builds.
+一个现代化的 TypeScript 项目脚手架，用于快速创建 TypeScript 库项目。内置完整的开发、构建、测试和发布流程。
 
-- [ts-starter](#ts-starter)
-  - [Features](#features)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Scripts](#scripts)
-  - [API Reference](#api-reference)
-    - [String Utilities](#string-utilities)
-    - [Array Utilities](#array-utilities)
-    - [Number Utilities](#number-utilities)
-    - [Type Utilities](#type-utilities)
-    - [Async Utilities](#async-utilities)
-  <!--toc:end-->
+## 特性
 
-A lightweight TypeScript utility library with common helper functions for strings, arrays, numbers, and more.
+- 🚀 **TypeScript 5** - 最新的 TypeScript 支持，严格类型检查
+- 📦 **双模式构建** - 同时输出 ESM 和 CommonJS 格式
+- 🎯 **零配置工具链** - tsup + Vitest + Biome，开箱即用
+- 🔄 **Changesets 集成** - 自动化版本管理和发布
+- 📁 **子路径导出** - 支持 `your-lib/utils` 这样的导入方式
+- 🧪 **Vitest 测试** - 快速、现代的测试框架
+- 🎨 **Biome 统一工具** - 一个工具处理 lint 和 format
 
-## Features
+## 快速开始
 
-- 🚀 **TypeScript First** - Written in TypeScript with full type definitions
-- 📦 **Zero Dependencies** - No runtime dependencies
-- 🎯 **ESM & CJS** - Supports both module formats
-- 🔧 **Tree Shaking** - Import only what you need
-- ⚡ **Fast & Light** - Minimal footprint
-
-## Installation
+### 使用模板创建项目
 
 ```bash
-npm install ts-starter
-# or
-yarn add ts-starter
-# or
-pnpm add ts-starter
+# 克隆模板
+git clone https://github.com/your-username/ts-starter.git my-lib
+cd my-lib
+
+# 删除 git 历史，初始化新项目
+rm -rf .git
+git init
+git add .
+git commit -m "Initial commit"
+
+# 安装依赖
+pnpm install
 ```
 
-- **TypeScript** – Full type checking and IntelliSense support with strict typing, interfaces, and generics
-- **Vitest** – Fast, zero-config unit testing with automatic test discovery, browser and Node.js support, and mocking capabilities
-- **TSUP** – Bundles TypeScript code into modern formats (ESM, CJS, minified, etc.) with support for optimization, tree-shaking, and production builds
-- **Biome** – Automatic code formatting, linting, and code quality enforcement with consistent style across the team
-- **ESLint (via Biome)** – Integrated static analysis for catching bugs and enforcing best practices
-- **TypeScript configuration (tsconfig.json)** – Modular and well-organized configuration for type resolution and module resolution
-- **Vitest configuration (vitest.config.js)** – Supports test isolation, mocking, and environment setup
-- **TSUP configuration (tsup.config.js)** – Configurable build settings (output formats, sourcemaps, minification, etc.)
+### 初始化配置
 
-```typescript
-import { capitalize, chunk, clamp } from "ts-starter";
-
-// String utilities
-capitalize("hello"); // "Hello"
-
-// Array utilities
-chunk([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
-
-// Number utilities
-clamp(10, 0, 5); // 5
+```bash
+# 修改 package.json 中的项目名称、描述等信息
+# 修改 LICENSE 文件中的作者信息
+# 更新 README.md 为你项目的文档
 ```
 
-## Scripts
+## 可用脚本
 
-| Command       | Description                          |
-| ------------- | ------------------------------------ |
-| `pnpm dev`    | Start development mode with watch    |
-| `pnpm build`  | Build the project for production     |
-| `pnpm test`   | Run test cases                       |
-| `pnpm lint`   | Run Biome linter to check code       |
-| `pnpm lint:fix` | Run Biome linter and auto-fix issues |
-| `pnpm format` | Format code with Biome               |
+| 命令 | 描述 |
+|------|------|
+| `pnpm dev` | 开发模式，文件变更自动重新构建 |
+| `pnpm build` | 生产构建，输出到 `npm/` 目录 |
+| `pnpm test` | 运行单元测试 |
+| `pnpm lint` | 运行 Biome 检查代码 |
+| `pnpm lint:fix` | 运行 Biome 自动修复问题 |
+| `pnpm format` | 使用 Biome 格式化代码 |
 
-## API Reference
+## 项目结构
 
-### String Utilities
-
-#### `capitalize(str: string): string`
-
-Capitalize the first letter of a string.
-
-```typescript
-import { capitalize } from "ts-starter";
-
-capitalize("hello"); // "Hello"
-capitalize("world"); // "World"
-capitalize(""); // ""
+```
+my-lib/
+├── src/                    # 源代码目录
+│   └── index.ts            # 入口文件
+├── test/                   # 测试目录
+│   └── index.test.ts       # 单元测试文件
+├── npm/                    # 构建输出目录（自动生成）
+│   ├── index.js            # ESM 构建产物
+│   ├── index.cjs           # CJS 构建产物
+│   └── index.d.ts          # 类型声明文件
+├── package.json            # 项目配置
+├── tsconfig.json           # TypeScript 配置
+├── tsup.config.js          # 构建配置
+├── vitest.config.js        # 测试配置
+├── biome.json              # 代码规范配置
+└── .changeset/             # Changeset 配置
 ```
 
-### Array Utilities
+## 技术栈
 
-#### `chunk<T>(arr: T[], size: number): T[][]`
+- [TypeScript](https://www.typescriptlang.org/) - 类型安全的 JavaScript
+- [tsup](https://github.com/egoist/tsup) - 零配置 TypeScript 打包器
+- [Vitest](https://vitest.dev/) - 下一代测试框架
+- [Biome](https://biomejs.dev/) - 快速、统一的 linter 和 formatter
+- [Changesets](https://github.com/changesets/changesets) - 版本管理和发布工具
 
-Split an array into chunks of specified size.
+## 发布流程
+
+1. **创建变更集**
+   ```bash
+   pnpm changeset
+   ```
+
+2. **提升版本号**
+   ```bash
+   pnpm changeset version
+   ```
+
+3. **发布到 npm**
+   ```bash
+   pnpm publish
+   ```
+
+## 模块导出
+
+模板已配置好子路径导出，支持以下导入方式：
 
 ```typescript
-import { chunk } from "ts-starter";
+// 主入口
+import { foo } from 'your-lib';
 
-chunk([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
-chunk([1, 2, 3], 1); // [[1], [2], [3]]
-chunk([], 3); // []
+// 子路径入口
+import { bar } from 'your-lib/utils';
 ```
 
-### Number Utilities
+在 `package.json` 中配置：
 
-#### `clamp(value: number, min: number, max: number): number`
-
-Clamp a number between min and max values.
-
-```typescript
-import { clamp } from "ts-starter";
-
-clamp(10, 0, 5); // 5 (clamped to max)
-clamp(-5, 0, 10); // 0 (clamped to min)
-clamp(5, 0, 10); // 5 (within range)
-```
-
-### Type Utilities
-
-#### `isDefined<T>(value: T | null | undefined): value is T`
-
-Check if a value is not null or undefined.
-
-```typescript
-import { isDefined } from "ts-starter";
-
-isDefined(null); // false
-isDefined(undefined); // false
-isDefined(0); // true
-isDefined(""); // true
-isDefined(false); // true
-
-// Useful with array filter
-[1, null, 2, undefined, 3].filter(isDefined); // [1, 2, 3]
-```
-
-### Async Utilities
-
-#### `sleep(ms: number): Promise<void>`
-
-Sleep for a specified duration.
-
-```typescript
-import { sleep } from "ts-starter";
-
-async function example() {
-  console.log("Start");
-  await sleep(1000); // Wait 1 second
-  console.log("End");
+```json
+{
+  "exports": {
+    ".": {
+      "types": "./npm/index.d.ts",
+      "import": "./npm/index.js",
+      "require": "./npm/index.cjs"
+    },
+    "./*": {
+      "types": "./npm/*.d.ts",
+      "import": "./npm/*.js",
+      "require": "./npm/*.cjs"
+    }
+  }
 }
 ```
 
-## Tech Stack
+## 自定义配置
 
-- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
-- [tsup](https://github.com/egoist/tsup) - TypeScript bundler
-- [Biome](https://biomejs.dev/) - Fast linter and formatter
-- [Vitest](https://vitest.dev/) - Testing framework
-- [Changesets](https://github.com/changesets/changesets) - Version management
+### 添加新的源码文件
 
-## License
+1. 在 `src/` 目录下创建新文件，例如 `src/utils.ts`
+2. 重新运行 `pnpm build`
+3. 构建产物会自动生成到 `npm/utils.js` 等
+
+### 修改构建配置
+
+编辑 `tsup.config.js`：
+
+```javascript
+export default {
+  entry: ['src/index.ts', 'src/utils.ts'],  // 添加新的入口
+  format: ['esm', 'cjs'],
+  dts: true,
+  splitting: true,
+  sourcemap: true,
+  clean: true,
+  outDir: 'npm',
+};
+```
+
+## 许可证
 
 MIT
