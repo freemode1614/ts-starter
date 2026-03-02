@@ -1,6 +1,6 @@
-# ts-starter
+# TypeScript Starter
 
-<!--toc:start-->
+A modern, minimal TypeScript project scaffolded with modern tooling for development, testing, and production builds.
 
 - [ts-starter](#ts-starter)
   - [Features](#features)
@@ -35,7 +35,14 @@ yarn add ts-starter
 pnpm add ts-starter
 ```
 
-## Usage
+- **TypeScript** – Full type checking and IntelliSense support with strict typing, interfaces, and generics
+- **Vitest** – Fast, zero-config unit testing with automatic test discovery, browser and Node.js support, and mocking capabilities
+- **TSUP** – Bundles TypeScript code into modern formats (ESM, CJS, minified, etc.) with support for optimization, tree-shaking, and production builds
+- **Biome** – Automatic code formatting, linting, and code quality enforcement with consistent style across the team
+- **ESLint (via Biome)** – Integrated static analysis for catching bugs and enforcing best practices
+- **TypeScript configuration (tsconfig.json)** – Modular and well-organized configuration for type resolution and module resolution
+- **Vitest configuration (vitest.config.js)** – Supports test isolation, mocking, and environment setup
+- **TSUP configuration (tsup.config.js)** – Configurable build settings (output formats, sourcemaps, minification, etc.)
 
 ```typescript
 import { capitalize, chunk, clamp } from "ts-starter";

@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
+<<<<<<< HEAD
 import { capitalize, chunk, clamp } from "../src/index";
+=======
+>>>>>>> 1e861090e35e8ad596b4d345a41bd68fe6975129
 
 describe("string utils", () => {
   it("capitalize should uppercase first letter", () => {

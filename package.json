@@ -2,7 +2,9 @@
   "name": "ts-starter",
   "version": "0.1.0",
   "description": "Project starter for TypeScript",
+  "license": "MIT",
   "type": "module",
+  "audits": true,
   "publishConfig": {
     "access": "public"
   },
@@ -19,8 +21,6 @@
     "typescript library",
     "typescript library template"
   ],
-  "author": "freemode1614",
-  "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
     "./*": {
@@ -42,7 +42,7 @@
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@10.9.0"
 }
