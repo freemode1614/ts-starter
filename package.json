@@ -4,6 +4,11 @@
   "description": "Project starter for TypeScript",
   "license": "MIT",
   "type": "module",
+  "sideEffects": false,
+  "files": ["npm", "README.md", "LICENSE"],
+  "main": "./npm/index.cjs",
+  "module": "./npm/index.js",
+  "types": "./npm/index.d.ts",
   "audits": true,
   "publishConfig": {
     "access": "public"
@@ -11,10 +16,14 @@
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown",
+    "build:check": "attw --pack .",
     "test": "vitest --watch=false",
+    "test:coverage": "vitest --watch=false --coverage",
+    "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "docs": "typedoc --options typedoc.config.ts"
   },
   "keywords": [
     "ts-starter",
@@ -24,22 +33,41 @@
   "exports": {
     "./package.json": "./package.json",
     "./*": {
-      "types": "./npm/*.d.mts",
-      "import": "./npm/*.mjs"
+      "import": {
+        "types": "./npm/*.d.ts",
+        "default": "./npm/*.js"
+      },
+      "require": {
+        "types": "./npm/*.d.cts",
+        "default": "./npm/*.cjs"
+      }
     },
     ".": {
-      "types": "./npm/index.d.mts",
-      "import": "./npm/index.mjs"
+      "import": {
+        "types": "./npm/index.d.ts",
+        "default": "./npm/index.js"
+      },
+      "require": {
+        "types": "./npm/index.d.cts",
+        "default": "./npm/index.cjs"
+      }
     }
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.4",
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.4",
     "@rollup/plugin-alias": "^6.0.0",
     "@types/node": "^20.17.50",
-    "tsdown": "0.21.0-beta.2",
+    "lint-staged": "^16.4.0",
+    "tsdown": "^0.9.9",
+    "typedoc": "^0.28.19",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx,mjs,cjs}": ["biome check --write"],
+    "*.{json,md,yml,yaml}": ["biome format --write"]
   },
   "packageManager": "pnpm@10.9.0"
 }

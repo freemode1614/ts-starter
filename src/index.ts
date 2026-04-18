@@ -110,4 +110,5 @@ export type {
   AsyncFn,
   DeepPartial,
   DeepReadonly,
+  DeepRequired,
 } from "@/types.js";
