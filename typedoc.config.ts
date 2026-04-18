@@ -22,4 +22,8 @@ export default {
     "Math utilities",
     "*",
   ],
+  validation: {
+    invalidLink: true,
+  },
+  markdownLinkExternal: false,
 };
