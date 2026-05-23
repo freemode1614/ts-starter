@@ -46,18 +46,18 @@ pnpm install
 
 ## 可用脚本
 
-| 命令 | 描述 |
-|------|------|
-| `pnpm dev` | 开发模式，文件变更自动重新构建 |
-| `pnpm build` | 生产构建，输出到 `npm/` 目录 |
-| `pnpm build:check` | 检查包导出是否正确（attw） |
-| `pnpm test` | 运行单元测试和类型测试 |
-| `pnpm test:coverage` | 运行测试并生成覆盖率报告 |
-| `pnpm typecheck` | TypeScript 类型检查 |
-| `pnpm lint` | 运行 Biome 检查代码 |
-| `pnpm lint:fix` | 运行 Biome 自动修复问题 |
-| `pnpm format` | 使用 Biome 格式化代码 |
-| `pnpm docs` | 生成 API 文档 |
+| 命令                 | 描述                           |
+| -------------------- | ------------------------------ |
+| `pnpm dev`           | 开发模式，文件变更自动重新构建 |
+| `pnpm build`         | 生产构建，输出到 `npm/` 目录   |
+| `pnpm build:check`   | 检查包导出是否正确（attw）     |
+| `pnpm test`          | 运行单元测试和类型测试         |
+| `pnpm test:coverage` | 运行测试并生成覆盖率报告       |
+| `pnpm typecheck`     | TypeScript 类型检查            |
+| `pnpm lint`          | 运行 Biome 检查代码            |
+| `pnpm lint:fix`      | 运行 Biome 自动修复问题        |
+| `pnpm format`        | 使用 Biome 格式化代码          |
+| `pnpm docs`          | 生成 API 文档                  |
 
 ## 项目结构
 
@@ -99,35 +99,35 @@ my-lib/
 ### 字符串工具
 
 ```typescript
-import { capitalize } from 'your-lib';
+import { capitalize } from "your-lib";
 
-capitalize("hello") // "Hello"
-capitalize("world") // "World"
+capitalize("hello"); // "Hello"
+capitalize("world"); // "World"
 ```
 
 ### 数组工具
 
 ```typescript
-import { chunk } from 'your-lib';
+import { chunk } from "your-lib";
 
-chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]
-chunk([1, 2, 3], 1)       // [[1], [2], [3]]
+chunk([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
+chunk([1, 2, 3], 1); // [[1], [2], [3]]
 ```
 
 ### 数字工具
 
 ```typescript
-import { clamp } from 'your-lib';
+import { clamp } from "your-lib";
 
-clamp(10, 0, 5)  // 5
-clamp(-5, 0, 10) // 0
-clamp(5, 0, 10)  // 5
+clamp(10, 0, 5); // 5
+clamp(-5, 0, 10); // 0
+clamp(5, 0, 10); // 5
 ```
 
 ### 类型工具
 
 ```typescript
-import type { DeepPartial, DeepReadonly, DeepRequired } from 'your-lib';
+import type { DeepPartial, DeepReadonly, DeepRequired } from "your-lib";
 
 interface User {
   name: string;
@@ -153,12 +153,12 @@ type RequiredUser = DeepRequired<PartialUser>;
 ### 异步工具
 
 ```typescript
-import { sleep } from 'your-lib';
+import { sleep } from "your-lib";
 
 async function example() {
-  console.log('开始');
+  console.log("开始");
   await sleep(1000); // 等待 1 秒
-  console.log('结束');
+  console.log("结束");
 }
 ```
 
@@ -178,11 +178,13 @@ async function example() {
 ### 手动发布
 
 1. **创建变更集**
+
    ```bash
    pnpm changeset
    ```
 
 2. **提升版本号**
+
    ```bash
    pnpm changeset version
    ```
@@ -208,10 +210,10 @@ async function example() {
 
 ```typescript
 // 主入口
-import { foo } from 'your-lib';
+import { foo } from "your-lib";
 
 // 子路径入口
-import { bar } from 'your-lib/utils';
+import { bar } from "your-lib/utils";
 ```
 
 在 `package.json` 中配置：

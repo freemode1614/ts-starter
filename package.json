@@ -2,46 +2,24 @@
   "name": "ts-starter",
   "version": "0.1.0",
   "description": "Project starter for TypeScript",
-  "license": "MIT",
-  "type": "module",
-  "sideEffects": false,
-  "files": ["npm", "README.md", "LICENSE"],
-  "main": "./npm/index.cjs",
-  "module": "./npm/index.js",
-  "types": "./npm/index.d.ts",
-  "audits": true,
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "dev": "tsdown --watch",
-    "build": "tsdown",
-    "build:check": "attw --pack .",
-    "test": "vitest --watch=false",
-    "test:coverage": "vitest --watch=false --coverage",
-    "typecheck": "tsc --noEmit",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write .",
-    "typedoc": "typedoc --options typedoc.config.ts"
-  },
   "keywords": [
     "ts-starter",
     "typescript library",
     "typescript library template"
   ],
+  "license": "MIT",
+  "files": [
+    "npm",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./npm/index.cjs",
+  "module": "./npm/index.js",
+  "types": "./npm/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
-    "./*": {
-      "import": {
-        "types": "./npm/*.d.ts",
-        "default": "./npm/*.js"
-      },
-      "require": {
-        "types": "./npm/*.d.cts",
-        "default": "./npm/*.cjs"
-      }
-    },
     ".": {
       "import": {
         "types": "./npm/index.d.ts",
@@ -51,24 +29,56 @@
         "types": "./npm/index.d.cts",
         "default": "./npm/index.cjs"
       }
+    },
+    "./*": {
+      "import": {
+        "types": "./npm/*.d.ts",
+        "default": "./npm/*.js"
+      },
+      "require": {
+        "types": "./npm/*.d.cts",
+        "default": "./npm/*.cjs"
+      }
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "build:check": "attw --pack .",
+    "test": "vitest --watch=false",
+    "test:coverage": "vitest --watch=false --coverage",
+    "lint": "oxlint --ignore-path=.gitignore --type-aware --type-check .",
+    "lint:fix": "oxlint --ignore-path=.gitignore --type-aware --type-check . --fix",
+    "format": "oxfmt .",
+    "typedoc": "typedoc --options typedoc.config.ts"
+  },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.17.4",
-    "@biomejs/biome": "^1.9.4",
-    "@changesets/cli": "^2.29.4",
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@changesets/cli": "^2.31.0",
     "@rollup/plugin-alias": "^6.0.0",
-    "@types/node": "^20.17.50",
-    "lint-staged": "^16.4.0",
-    "tsdown": "^0.9.9",
+    "@types/node": "^25.9.1",
+    "@vitest/coverage-istanbul": "4.1.7",
+    "lint-staged": "^17.0.5",
+    "oxfmt": "^0.51.0",
+    "oxlint": "^1.66.0",
+    "oxlint-tsgolint": "^0.23.0",
+    "tsdown": "^0.22.0",
     "typedoc": "^0.28.19",
     "typedoc-plugin-markdown": "^4.11.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,mjs,cjs}": ["biome check --write"],
-    "*.{json,md,yml,yaml}": ["biome format --write"]
+    "*.{js,ts,jsx,tsx,mjs,cjs}": [
+      "oxlint --ignore-path=.gitignore --type-aware --type-check . --fix"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "oxfmt ."
+    ]
   },
-  "packageManager": "pnpm@10.9.0"
+  "packageManager": "pnpm@10.9.0",
+  "audits": true
 }

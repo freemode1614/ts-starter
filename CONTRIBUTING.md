@@ -39,6 +39,7 @@ pnpm dev
 ```
 
 类型包括：
+
 - `feat`: 新功能
 - `fix`: Bug 修复
 - `docs`: 文档更新

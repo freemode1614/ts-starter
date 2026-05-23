@@ -9,24 +9,23 @@
 - **包管理**: pnpm
 - **构建工具**: tsdown
 - **测试框架**: Vitest
-- **代码规范**: Biome
+- **代码规范**: oxlint + oxfmt
 - **文档生成**: TypeDoc + typedoc-plugin-markdown
 - **版本发布**: Changesets
 
 ## 开发命令
 
-| 命令 | 描述 |
-|------|------|
-| `pnpm dev` | 开发模式，文件变更自动重新构建 |
-| `pnpm build` | 生产构建，输出到 `npm/` 目录 |
-| `pnpm build:check` | 检查包导出是否正确（attw） |
-| `pnpm test` | 运行单元测试和类型测试 |
-| `pnpm test:coverage` | 运行测试并生成覆盖率报告 |
-| `pnpm typecheck` | TypeScript 类型检查 |
-| `pnpm lint` | 运行 Biome 检查代码 |
-| `pnpm lint:fix` | 运行 Biome 自动修复问题 |
-| `pnpm format` | 使用 Biome 格式化代码 |
-| `pnpm typedoc` | 生成 API 文档到 `docs/api/` |
+| 命令                 | 描述                           |
+| -------------------- | ------------------------------ |
+| `pnpm dev`           | 开发模式，文件变更自动重新构建 |
+| `pnpm build`         | 生产构建，输出到 `npm/` 目录   |
+| `pnpm build:check`   | 检查包导出是否正确（attw）     |
+| `pnpm test`          | 运行单元测试和类型测试         |
+| `pnpm test:coverage` | 运行测试并生成覆盖率报告       |
+| `pnpm lint`          | 运行 oxlint 检查代码（含类型检查） |
+| `pnpm lint:fix`      | 运行 oxlint 自动修复问题       |
+| `pnpm format`        | 使用 oxfmt 格式化代码          |
+| `pnpm typedoc`       | 生成 API 文档到 `docs/api/`    |
 
 ## 项目结构
 
@@ -48,18 +47,17 @@ docs/api/             # API 文档（自动生成）
 
 ## 代码规范
 
-- 使用 Biome 进行 lint 和 format
+- 使用 oxlint + oxfmt 进行 lint 和 format
 - TypeScript 严格模式
 - 遵循现有代码风格和模式
-- 所有新增代码必须通过 `pnpm lint` 和 `pnpm typecheck`
+- 所有新增代码必须通过 `pnpm lint`
 
 ## 提交流程
 
-1. 运行 `pnpm typecheck` 确保类型正确
-2. 运行 `pnpm lint` 确保代码规范
-3. 运行 `pnpm test` 确保测试通过
-4. 提交时只提交必要的文件（避免提交 `npm/`、`docs/` 等自动生成目录，除非是首次添加配置）
-5. 使用 `pnpm changeset` 创建变更集
+1. 运行 `pnpm lint` 确保代码规范（含类型检查）
+2. 运行 `pnpm test` 确保测试通过
+3. 提交时只提交必要的文件（避免提交 `npm/`、`docs/` 等自动生成目录，除非是首次添加配置）
+4. 使用 `pnpm changeset` 创建变更集
 
 ## 注意事项
 

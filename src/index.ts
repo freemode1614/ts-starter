@@ -104,11 +104,4 @@ export { add, multiply } from "@/utils/math.js";
 /**
  * Type utilities
  */
-export type {
-  Nullable,
-  Fn,
-  AsyncFn,
-  DeepPartial,
-  DeepReadonly,
-  DeepRequired,
-} from "@/types.js";
+export type { Nullable, Fn, AsyncFn, DeepPartial, DeepReadonly, DeepRequired } from "@/types.js";
