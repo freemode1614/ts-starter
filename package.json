@@ -17,12 +17,12 @@
   "sideEffects": false,
   "main": "./npm/index.cjs",
   "module": "./npm/index.js",
-  "types": "./npm/index.d.ts",
+        "types": "./npm/index.d.mts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./npm/index.d.ts",
+"types": "./npm/index.d.mts",
         "default": "./npm/index.js"
       },
       "require": {
@@ -32,7 +32,7 @@
     },
     "./*": {
       "import": {
-        "types": "./npm/*.d.ts",
+        "types": "./npm/*.d.mts",
         "default": "./npm/*.js"
       },
       "require": {
@@ -58,9 +58,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
     "@changesets/cli": "^2.31.0",
-    "@rollup/plugin-alias": "^6.0.0",
     "@types/node": "^25.9.1",
-    "@vitest/coverage-istanbul": "4.1.7",
     "lint-staged": "^17.0.5",
     "oxfmt": "^0.51.0",
     "oxlint": "^1.66.0",
