@@ -17,12 +17,12 @@
   "sideEffects": false,
   "main": "./npm/index.cjs",
   "module": "./npm/index.js",
-        "types": "./npm/index.d.mts",
+  "types": "./npm/index.d.mts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
-"types": "./npm/index.d.mts",
+        "types": "./npm/index.d.mts",
         "default": "./npm/index.js"
       },
       "require": {
