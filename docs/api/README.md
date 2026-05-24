@@ -1,6 +1,6 @@
 **ts-starter**
 
-***
+---
 
 # ts-starter
 

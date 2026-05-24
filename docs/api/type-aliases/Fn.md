@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
-***
+---
 
 [ts-starter](../README.md) / Fn
 
@@ -16,7 +16,7 @@ Represents a function that takes arguments of type TArgs and returns a value of 
 
 ### TArgs
 
-`TArgs` *extends* `unknown`[] = `unknown`[]
+`TArgs` _extends_ `unknown`[] = `unknown`[]
 
 ### TReturn
 

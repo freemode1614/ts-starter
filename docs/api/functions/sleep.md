@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
-***
+---
 
 [ts-starter](../README.md) / sleep
 
@@ -29,5 +29,5 @@ A promise that resolves after the duration
 ## Example
 
 ```ts
-await sleep(1000) // waits 1 second
+await sleep(1000); // waits 1 second
 ```

@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
-***
+---
 
 [ts-starter](../README.md) / chunk
 
@@ -41,5 +41,5 @@ An array of chunks
 ## Example
 
 ```ts
-chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]
+chunk([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
 ```

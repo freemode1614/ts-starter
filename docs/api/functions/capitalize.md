@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
-***
+---
 
 [ts-starter](../README.md) / capitalize
 
@@ -29,5 +29,5 @@ The capitalized string
 ## Example
 
 ```ts
-capitalize("hello") // "Hello"
+capitalize("hello"); // "Hello"
 ```

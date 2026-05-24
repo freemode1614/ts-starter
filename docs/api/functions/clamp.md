@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
-***
+---
 
 [ts-starter](../README.md) / clamp
 
@@ -41,6 +41,6 @@ The clamped value
 ## Example
 
 ```ts
-clamp(10, 0, 5) // 5
-clamp(-5, 0, 10) // 0
+clamp(10, 0, 5); // 5
+clamp(-5, 0, 10); // 0
 ```

@@ -15,17 +15,17 @@
 
 ## 开发命令
 
-| 命令                 | 描述                           |
-| -------------------- | ------------------------------ |
-| `pnpm dev`           | 开发模式，文件变更自动重新构建 |
-| `pnpm build`         | 生产构建，输出到 `npm/` 目录   |
-| `pnpm build:check`   | 检查包导出是否正确（attw）     |
-| `pnpm test`          | 运行单元测试和类型测试         |
-| `pnpm test:coverage` | 运行测试并生成覆盖率报告       |
+| 命令                 | 描述                               |
+| -------------------- | ---------------------------------- |
+| `pnpm dev`           | 开发模式，文件变更自动重新构建     |
+| `pnpm build`         | 生产构建，输出到 `npm/` 目录       |
+| `pnpm build:check`   | 检查包导出是否正确（attw）         |
+| `pnpm test`          | 运行单元测试和类型测试             |
+| `pnpm test:coverage` | 运行测试并生成覆盖率报告           |
 | `pnpm lint`          | 运行 oxlint 检查代码（含类型检查） |
-| `pnpm lint:fix`      | 运行 oxlint 自动修复问题       |
-| `pnpm format`        | 使用 oxfmt 格式化代码          |
-| `pnpm typedoc`       | 生成 API 文档到 `docs/api/`    |
+| `pnpm lint:fix`      | 运行 oxlint 自动修复问题           |
+| `pnpm format`        | 使用 oxfmt 格式化代码              |
+| `pnpm typedoc`       | 生成 API 文档到 `docs/api/`        |
 
 ## 项目结构
 

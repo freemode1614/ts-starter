@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
-***
+---
 
 [ts-starter](../README.md) / isDefined
 
@@ -35,8 +35,8 @@ True if the value is not null or undefined
 ## Example
 
 ```ts
-isDefined(null) // false
-isDefined(undefined) // false
-isDefined(0) // true
-isDefined("") // true
+isDefined(null); // false
+isDefined(undefined); // false
+isDefined(0); // true
+isDefined(""); // true
 ```
