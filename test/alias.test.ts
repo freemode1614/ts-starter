@@ -1,5 +1,5 @@
-import { add, multiply } from "@/utils/math";
 import { describe, expect, it } from "vitest";
+import { add, multiply } from "@/utils/math";
 
 describe("path alias imports", () => {
   it("should import add from @/utils/math", () => {

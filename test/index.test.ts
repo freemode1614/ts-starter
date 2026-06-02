@@ -1,5 +1,5 @@
-import { capitalize, chunk, clamp, isDefined, sleep } from "@/index";
 import { describe, expect, it } from "vitest";
+import { capitalize, chunk, clamp, isDefined, sleep } from "@/index";
 
 describe("string utils", () => {
   it("capitalize should uppercase first letter", () => {

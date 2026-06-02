@@ -1,5 +1,5 @@
-import type { DeepPartial, DeepReadonly, DeepRequired } from "@/types";
 import { describe, expectTypeOf, it } from "vitest";
+import type { DeepPartial, DeepReadonly, DeepRequired } from "@/types";
 
 interface TestUser {
   name: string;
@@ -25,8 +25,12 @@ describe("DeepPartial type", () => {
     type PartialUser = DeepPartial<TestUser>;
 
     // Top-level should be optional
-    expectTypeOf<PartialUser>().toHaveProperty("name").toEqualTypeOf<string | undefined>();
-    expectTypeOf<PartialUser>().toHaveProperty("age").toEqualTypeOf<number | undefined>();
+    expectTypeOf<PartialUser>()
+      .toHaveProperty("name")
+      .toEqualTypeOf<string | undefined>();
+    expectTypeOf<PartialUser>()
+      .toHaveProperty("age")
+      .toEqualTypeOf<number | undefined>();
 
     // Nested should be optional
     expectTypeOf<PartialUser>().toHaveProperty("address").toEqualTypeOf<
@@ -44,12 +48,16 @@ describe("DeepPartial type", () => {
 
   it("should preserve arrays", () => {
     type PartialUser = DeepPartial<TestUser>;
-    expectTypeOf<PartialUser["hobbies"]>().toEqualTypeOf<string[] | undefined>();
+    expectTypeOf<PartialUser["hobbies"]>().toEqualTypeOf<
+      string[] | undefined
+    >();
   });
 
   it("should preserve functions", () => {
     type PartialUser = DeepPartial<TestUser>;
-    expectTypeOf<PartialUser["callback"]>().toEqualTypeOf<(() => void) | undefined>();
+    expectTypeOf<PartialUser["callback"]>().toEqualTypeOf<
+      (() => void) | undefined
+    >();
   });
 
   it("should preserve Date objects", () => {
@@ -75,7 +83,9 @@ describe("DeepReadonly type", () => {
   it("should make arrays readonly", () => {
     type ReadonlyUser = DeepReadonly<TestUser>;
     expectTypeOf<ReadonlyUser["hobbies"]>().toMatchTypeOf<readonly string[]>();
-    expectTypeOf<ReadonlyUser["metadata"]["tags"]>().toMatchTypeOf<readonly string[]>();
+    expectTypeOf<ReadonlyUser["metadata"]["tags"]>().toMatchTypeOf<
+      readonly string[]
+    >();
   });
 
   it("should preserve functions", () => {
@@ -99,7 +109,11 @@ describe("DeepRequired type", () => {
     // Check that properties are required and have correct types
     expectTypeOf<RequiredUser>().toHaveProperty("name").toEqualTypeOf<string>();
     expectTypeOf<RequiredUser>().toHaveProperty("address").toBeObject();
-    expectTypeOf<RequiredUser["address"]>().toHaveProperty("street").toEqualTypeOf<string>();
-    expectTypeOf<RequiredUser["address"]>().toHaveProperty("city").toEqualTypeOf<string>();
+    expectTypeOf<RequiredUser["address"]>()
+      .toHaveProperty("street")
+      .toEqualTypeOf<string>();
+    expectTypeOf<RequiredUser["address"]>()
+      .toHaveProperty("city")
+      .toEqualTypeOf<string>();
   });
 });

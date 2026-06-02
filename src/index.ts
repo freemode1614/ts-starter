@@ -97,11 +97,17 @@ export function sleep(ms: number): Promise<void> {
 }
 
 /**
+ * Type utilities
+ */
+export type {
+  AsyncFn,
+  DeepPartial,
+  DeepReadonly,
+  DeepRequired,
+  Fn,
+  Nullable,
+} from "@/types.js";
+/**
  * Math utilities (using path alias @/)
  */
 export { add, multiply } from "@/utils/math.js";
-
-/**
- * Type utilities
- */
-export type { Nullable, Fn, AsyncFn, DeepPartial, DeepReadonly, DeepRequired } from "@/types.js";

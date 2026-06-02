@@ -17,10 +17,10 @@ export type Fn<TArgs extends unknown[] = unknown[], TReturn = unknown> = (
 /**
  * Represents an asynchronous function
  */
-export type AsyncFn<TArgs extends unknown[] = unknown[], TReturn = unknown> = Fn<
-  TArgs,
-  Promise<TReturn>
->;
+export type AsyncFn<
+  TArgs extends unknown[] = unknown[],
+  TReturn = unknown,
+> = Fn<TArgs, Promise<TReturn>>;
 
 /**
  * Deep partial type - makes all properties optional recursively
@@ -36,7 +36,11 @@ export type DeepPartial<T> = T extends (infer U)[]
         ? {
             [P in keyof T]?: T[P] extends null | undefined
               ? T[P]
-              : T[P] extends Date | RegExp | Array<unknown> | ((...args: unknown[]) => unknown)
+              : T[P] extends
+                    | Date
+                    | RegExp
+                    | Array<unknown>
+                    | ((...args: unknown[]) => unknown)
                 ? T[P]
                 : DeepPartial<T[P]>;
           }
@@ -56,7 +60,11 @@ export type DeepReadonly<T> = T extends (infer U)[]
         ? {
             readonly [P in keyof T]: T[P] extends null | undefined
               ? T[P]
-              : T[P] extends Date | RegExp | Array<unknown> | ((...args: unknown[]) => unknown)
+              : T[P] extends
+                    | Date
+                    | RegExp
+                    | Array<unknown>
+                    | ((...args: unknown[]) => unknown)
                 ? T[P]
                 : DeepReadonly<T[P]>;
           }
@@ -76,7 +84,11 @@ export type DeepRequired<T> = T extends (infer U)[]
         ? {
             [P in keyof T]-?: T[P] extends null | undefined
               ? NonNullable<T[P]>
-              : T[P] extends Date | RegExp | Array<unknown> | ((...args: unknown[]) => unknown)
+              : T[P] extends
+                    | Date
+                    | RegExp
+                    | Array<unknown>
+                    | ((...args: unknown[]) => unknown)
                 ? T[P]
                 : DeepRequired<T[P]>;
           }
