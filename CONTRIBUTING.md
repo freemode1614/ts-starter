@@ -6,7 +6,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/ts-starter.git
+git clone https://github.com/freemode1614/ts-starter.git
 cd ts-starter
 
 # 安装依赖
@@ -98,7 +98,7 @@ pnpm changeset
 
 ## 问题反馈
 
-如果你发现了 bug 或有功能建议，请 [创建 Issue](https://github.com/your-username/ts-starter/issues/new)。
+如果你发现了 bug 或有功能建议，请 [创建 Issue](https://github.com/freemode1614/ts-starter/issues/new)。
 
 ## 许可证
 

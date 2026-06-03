@@ -1,7 +1,7 @@
 # ts-starter
 
 [![npm version](https://img.shields.io/npm/v/ts-starter)](https://www.npmjs.com/package/ts-starter)
-[![CI](https://github.com/your-username/ts-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/ts-starter/actions/workflows/ci.yml)
+[![CI](https://github.com/freemode1614/ts-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/freemode1614/ts-starter/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 一个现代化的 TypeScript 项目脚手架，用于快速创建 TypeScript 库项目。内置完整的开发、构建、测试和发布流程。
@@ -23,7 +23,7 @@
 
 ```bash
 # 克隆模板
-git clone https://github.com/your-username/ts-starter.git my-lib
+git clone https://github.com/freemode1614/ts-starter.git my-lib
 cd my-lib
 
 # 删除 git 历史，初始化新项目
