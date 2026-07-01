@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@arethetypeswrong/cli':
-        specifier: ^0.18.2
-        version: 0.18.3
+        specifier: ^0.18.4
+        version: 0.18.4
       '@biomejs/biome':
         specifier: ^2.4.16
         version: 2.4.16
@@ -25,7 +25,7 @@ importers:
         version: 17.0.7
       tsdown:
         specifier: ^0.22.0
-        version: 0.22.1(@arethetypeswrong/core@0.18.3)(typescript@6.0.3)
+        version: 0.22.1(@arethetypeswrong/core@0.18.4)(typescript@6.0.3)
       typedoc:
         specifier: ^0.28.19
         version: 0.28.19(typescript@6.0.3)
@@ -44,13 +44,13 @@ packages:
   '@andrewbranch/untar.js@1.0.3':
     resolution: {integrity: sha512-Jh15/qVmrLGhkKJBdXlK1+9tY4lZruYjsgkDFj08ZmDiWVBLJcqkok7Z0/R0In+i1rScBpJlSvrTS2Lm41Pbnw==}
 
-  '@arethetypeswrong/cli@0.18.3':
-    resolution: {integrity: sha512-GeAlc+lUD4gKHD/LDQNvQY30FfQ+xAXg2inbQKUjFZgTOdI5ygEweaOnGHGBPSKXSLGQC7VLhpXu9zMnYk/4sQ==}
+  '@arethetypeswrong/cli@0.18.4':
+    resolution: {integrity: sha512-kNWo6LTzGAuLYPpJ7Sgo63whSUeeSuKMlYx6IBgzs4ONEG807gW4hSSENvpeCHzO2H2wIzG5EFl0OKBbqGBAyA==}
     engines: {node: '>=20'}
     hasBin: true
 
-  '@arethetypeswrong/core@0.18.3':
-    resolution: {integrity: sha512-sWBB/tdIktaT5xMq0Dz6CJyqcf6oMNdmiKiuPU1lWoJLTL6gjRSsksBuSgqot21hylkklBQY1wiSu+PkZhW7sw==}
+  '@arethetypeswrong/core@0.18.4':
+    resolution: {integrity: sha512-M5F0ePyN6h2Z6XxRiyIPqjGbltotXLjR0CKA0uKspsDu0QmgTNYvRb4RSQPMUs2ZXZHCCYpbaZbFbYOXLxCjUA==}
     engines: {node: '>=20'}
 
   '@babel/generator@8.0.0-rc.6':
@@ -930,8 +930,8 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
-  nanoid@3.3.12:
-    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
+  nanoid@3.3.15:
+    resolution: {integrity: sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -1015,8 +1015,8 @@ packages:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
 
-  postcss@8.5.15:
-    resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
+  postcss@8.5.16:
+    resolution: {integrity: sha512-vuwillviilfKZsg0VGj5R/YwwcHx4SLsIOI/7K6mQkWx+l5cUHTjj5g0AasTBcyXsbfTgrwsUNmVUb5xVwyPwg==}
     engines: {node: ^10 || ^12 || >=14}
 
   prettier@2.8.8:
@@ -1095,6 +1095,11 @@ packages:
 
   semver@7.8.1:
     resolution: {integrity: sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.8.5:
+    resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -1415,32 +1420,32 @@ packages:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
 
-  yargs@16.2.0:
-    resolution: {integrity: sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==}
+  yargs@16.2.2:
+    resolution: {integrity: sha512-Nt9ZJjXTv5R8MHbqby/wXQ6Gi0Bb3TcYZkR1bzuL4yB2OxWPkXknz513gEF0GoA6tn00UpbPvERW8rzCuWCA6w==}
     engines: {node: '>=10'}
 
 snapshots:
 
   '@andrewbranch/untar.js@1.0.3': {}
 
-  '@arethetypeswrong/cli@0.18.3':
+  '@arethetypeswrong/cli@0.18.4':
     dependencies:
-      '@arethetypeswrong/core': 0.18.3
+      '@arethetypeswrong/core': 0.18.4
       chalk: 4.1.2
       cli-table3: 0.6.5
       commander: 10.0.1
       marked: 9.1.6
       marked-terminal: 7.3.0(marked@9.1.6)
-      semver: 7.8.1
+      semver: 7.8.5
 
-  '@arethetypeswrong/core@0.18.3':
+  '@arethetypeswrong/core@0.18.4':
     dependencies:
       '@andrewbranch/untar.js': 1.0.3
       '@loaderkit/resolve': 1.0.6
       cjs-module-lexer: 1.4.3
       fflate: 0.8.3
       lru-cache: 11.5.1
-      semver: 7.8.1
+      semver: 7.8.5
       typescript: 5.6.1-rc
       validate-npm-package-name: 5.0.1
 
@@ -1519,7 +1524,7 @@ snapshots:
       outdent: 0.5.0
       prettier: 2.8.8
       resolve-from: 5.0.0
-      semver: 7.8.1
+      semver: 7.8.5
 
   '@changesets/assemble-release-plan@6.0.10':
     dependencies:
@@ -1528,7 +1533,7 @@ snapshots:
       '@changesets/should-skip-package': 0.1.2
       '@changesets/types': 6.1.0
       '@manypkg/get-packages': 1.1.3
-      semver: 7.8.1
+      semver: 7.8.5
 
   '@changesets/changelog-git@0.2.1':
     dependencies:
@@ -1585,7 +1590,7 @@ snapshots:
       '@changesets/types': 6.1.0
       '@manypkg/get-packages': 1.1.3
       picocolors: 1.1.1
-      semver: 7.8.1
+      semver: 7.8.5
 
   '@changesets/get-release-plan@4.0.16':
     dependencies:
@@ -1965,7 +1970,7 @@ snapshots:
       mz: 2.7.0
       parse5: 5.1.1
       parse5-htmlparser2-tree-adapter: 6.0.1
-      yargs: 16.2.0
+      yargs: 16.2.2
 
   cli-table3@0.6.5:
     dependencies:
@@ -2300,7 +2305,7 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  nanoid@3.3.12: {}
+  nanoid@3.3.15: {}
 
   node-emoji@2.2.0:
     dependencies:
@@ -2363,9 +2368,9 @@ snapshots:
 
   pify@4.0.1: {}
 
-  postcss@8.5.15:
+  postcss@8.5.16:
     dependencies:
-      nanoid: 3.3.12
+      nanoid: 3.3.15
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -2445,6 +2450,8 @@ snapshots:
   safer-buffer@2.1.2: {}
 
   semver@7.8.1: {}
+
+  semver@7.8.5: {}
 
   shebang-command@2.0.0:
     dependencies:
@@ -2550,7 +2557,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.22.1(@arethetypeswrong/core@0.18.3)(typescript@6.0.3):
+  tsdown@0.22.1(@arethetypeswrong/core@0.18.4)(typescript@6.0.3):
     dependencies:
       ansis: 4.3.1
       cac: 7.0.0
@@ -2568,7 +2575,7 @@ snapshots:
       tree-kill: 1.2.2
       unconfig-core: 7.5.0
     optionalDependencies:
-      '@arethetypeswrong/core': 0.18.3
+      '@arethetypeswrong/core': 0.18.4
       typescript: 6.0.3
     transitivePeerDependencies:
       - '@ts-macro/tsc'
@@ -2615,7 +2622,7 @@ snapshots:
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
-      postcss: 8.5.15
+      postcss: 8.5.16
       rolldown: 1.0.3
       tinyglobby: 0.2.17
     optionalDependencies:
@@ -2683,7 +2690,7 @@ snapshots:
 
   yargs-parser@20.2.9: {}
 
-  yargs@16.2.0:
+  yargs@16.2.2:
     dependencies:
       cliui: 7.0.4
       escalade: 3.2.0
