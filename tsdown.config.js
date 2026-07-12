@@ -8,6 +8,9 @@ export default defineConfig((config) => {
       outDir: "./npm",
       dts: true,
       format: "esm",
+      outExtensions() {
+        return { js: ".js", dts: ".d.ts" };
+      },
       sourcemap: config.sourcemap,
       clean: config.sourcemap,
       treeshake: true,
@@ -27,7 +30,7 @@ export default defineConfig((config) => {
       clean: false,
       treeshake: true,
       shims: true,
-      outExtension({ format }) {
+      outExtensions({ format }) {
         return format === "cjs" ? { js: ".cjs", dts: ".d.cts" } : { js: ".js" };
       },
     },

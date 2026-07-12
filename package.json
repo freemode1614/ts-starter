@@ -8,7 +8,11 @@
     "typescript library template"
   ],
   "license": "MIT",
-  "files": ["npm", "README.md", "LICENSE"],
+  "files": [
+    "npm",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "sideEffects": false,
   "main": "./npm/index.cjs",
@@ -59,14 +63,16 @@
     "@types/node": "^25.9.1",
     "lint-staged": "^17.0.5",
     "tsdown": "^0.22.0",
-    "typedoc": "^0.28.19",
-    "typedoc-plugin-markdown": "^4.11.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,mjs,cjs}": ["biome check --write ."],
-    "*.{json,md,yml,yaml}": ["biome format --write ."]
+    "*.{js,ts,jsx,tsx,mjs,cjs}": [
+      "biome check --write ."
+    ],
+    "*.{json,md,yml,yaml}": [
+      "biome format --write ."
+    ]
   },
   "packageManager": "pnpm@11.5.1"
 }
