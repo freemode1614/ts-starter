@@ -53,7 +53,7 @@
     "typedoc": "typedoc --options typedoc.config.ts"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.4",
+    "@arethetypeswrong/cli": "^0.18.5",
     "@biomejs/biome": "^2.4.16",
     "@changesets/cli": "^2.31.0",
     "@types/node": "^25.9.1",
