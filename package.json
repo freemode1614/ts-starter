@@ -8,7 +8,11 @@
     "typescript library template"
   ],
   "license": "MIT",
-  "files": ["npm", "README.md", "LICENSE"],
+  "files": [
+    "npm",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "sideEffects": false,
   "main": "./npm/index.cjs",
@@ -65,8 +69,12 @@
     "vitest": "^4.1.7"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,mjs,cjs}": ["biome check --write ."],
-    "*.{json,md,yml,yaml}": ["biome format --write ."]
+    "*.{js,ts,jsx,tsx,mjs,cjs}": [
+      "biome check --write ."
+    ],
+    "*.{json,md,yml,yaml}": [
+      "biome format --write ."
+    ]
   },
   "packageManager": "pnpm@11.5.1"
 }
