@@ -60,6 +60,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # Build before running tests so the CJS smoke test (test/cjs.test.ts)
+      # can resolve the artifact in `npm/`. The `npm/` directory is gitignored
+      # and is produced by `pnpm build`.
+      - name: Build
+        run: pnpm build
+
       - name: Run tests
         run: pnpm test
 
@@ -95,7 +101,6 @@ jobs:
   typecheck:
     name: Type Check
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:

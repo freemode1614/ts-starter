@@ -97,7 +97,7 @@ export function sleep(ms: number): Promise<void> {
 }
 
 /**
- * Type utilities
+ * Types
  */
 export type {
   AsyncFn,

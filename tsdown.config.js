@@ -14,6 +14,11 @@ export default defineConfig((config) => {
       shims: false,
     },
     // CJS build
+    // shims: true injects require() / module / exports compatibility so ESM-only
+    // dependencies remain consumable from CommonJS output.
+    // outExtensions forces .cjs / .d.cts so Node.js loads the file with CJS semantics
+    // even though the package is `"type": "module"`.
+    // clean: false preserves the ESM build's artifacts from the previous entry.
     {
       entry: ["./src/index.ts"],
       outDir: "./npm",
@@ -27,7 +32,7 @@ export default defineConfig((config) => {
       clean: false,
       treeshake: true,
       shims: true,
-      outExtension({ format }) {
+      outExtensions({ format }) {
         return format === "cjs" ? { js: ".cjs", dts: ".d.cts" } : { js: ".js" };
       },
     },
