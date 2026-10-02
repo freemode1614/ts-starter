@@ -17,9 +17,9 @@ export default {
     "String utilities",
     "Array utilities",
     "Number utilities",
-    "Type utilities",
     "Async utilities",
     "Math utilities",
+    "Types",
     "*",
   ],
   validation: {
