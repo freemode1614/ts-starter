@@ -57,7 +57,7 @@ pnpm install
 | `pnpm lint`          | 运行 Biome 检查代码            |
 | `pnpm lint:fix`      | 运行 Biome 自动修复问题        |
 | `pnpm format`        | 使用 Biome 格式化代码          |
-| `pnpm docs`          | 生成 API 文档                  |
+| `pnpm typedoc`       | 生成 API 文档                  |
 
 ## 项目结构
 
@@ -75,7 +75,7 @@ my-lib/
 ├── npm/                    # 构建输出目录（自动生成）
 │   ├── index.js            # ESM 构建产物
 │   ├── index.cjs           # CJS 构建产物
-│   ├── index.d.ts          # ESM 类型声明
+│   ├── index.d.mts         # ESM 类型声明
 │   └── index.d.cts         # CJS 类型声明
 ├── .github/
 │   └── workflows/          # GitHub Actions 工作流
@@ -91,7 +91,8 @@ my-lib/
 ├── typedoc.config.ts       # 文档生成配置
 ├── .changeset/             # Changeset 配置
 ├── .husky/                 # Git hooks
-└── CONTRIBUTING.md         # 贡献指南
+├── CONTRIBUTING.md         # 贡献指南
+└── CODE_OF_CONDUCT.md      # 行为准则
 ```
 
 ## API 示例
@@ -223,7 +224,7 @@ import { bar } from "your-lib/utils";
   "exports": {
     ".": {
       "import": {
-        "types": "./npm/index.d.ts",
+        "types": "./npm/index.d.mts",
         "default": "./npm/index.js"
       },
       "require": {
@@ -233,7 +234,7 @@ import { bar } from "your-lib/utils";
     },
     "./*": {
       "import": {
-        "types": "./npm/*.d.ts",
+        "types": "./npm/*.d.mts",
         "default": "./npm/*.js"
       },
       "require": {
