@@ -61,14 +61,14 @@
     "typedoc": "typedoc --options typedoc.config.ts"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.18.4",
-    "@biomejs/biome": "^2.4.16",
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@biomejs/biome": "^2.5.14",
     "@changesets/cli": "^2.31.0",
     "@types/node": "^26.6.3",
-    "lint-staged": "^17.0.5",
-    "tsdown": "^0.22.0",
-    "typedoc": "^0.28.19",
-    "typedoc-plugin-markdown": "^4.11.0",
+    "lint-staged": "^17.6.0",
+    "tsdown": "^0.23.0",
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-markdown": "^4.13.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
