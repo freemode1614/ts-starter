@@ -15,7 +15,6 @@
 - 📁 **子路径导出** - 支持 `your-lib/utils` 这样的导入方式
 - 🧪 **完整测试** - 单元测试 + 类型测试，覆盖率追踪
 - 🎨 **代码规范** - Biome 统一处理 lint 和 format
-- 📖 **自动生成文档** - TypeDoc 自动生成 API 文档
 
 ## 快速开始
 
@@ -88,7 +87,6 @@ my-lib/
 ├── tsdown.config.js        # 构建配置
 ├── vitest.config.js        # 测试配置
 ├── biome.json              # 代码规范配置
-├── typedoc.config.ts       # 文档生成配置
 ├── .changeset/             # Changeset 配置
 ├── .husky/                 # Git hooks
 └── CONTRIBUTING.md         # 贡献指南
@@ -169,7 +167,6 @@ async function example() {
 - [Vitest](https://vitest.dev/) - 下一代测试框架
 - [Biome](https://biomejs.dev/) - 快速、统一的 linter 和 formatter
 - [Changesets](https://github.com/changesets/changesets) - 版本管理和发布工具
-- [TypeDoc](https://typedoc.org/) - TypeScript 文档生成器
 
 ## 发布流程
 

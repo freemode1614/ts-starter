@@ -53,8 +53,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "typecheck": "tsc --noEmit",
-    "typedoc": "typedoc --options typedoc.config.ts"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.4",
