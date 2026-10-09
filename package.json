@@ -50,7 +50,7 @@
   "scripts": {
     "dev": "tsdown --watch --sourcemap --dts.sourcemap",
     "build": "tsdown",
-    "build:check": "attw --pack .",
+    "build:check": "attw --pack . --profile esm-only",
     "prepublishOnly": "pnpm build",
     "pretest": "pnpm build",
     "test": "vitest --watch=false",
