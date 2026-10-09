@@ -43,8 +43,7 @@ src/
 test/
 ├── index.test.ts        # 单元测试
 ├── alias.test.ts        # 路径别名测试（@/ 别名解析）
-├── types.test.ts        # 类型测试（expectTypeOf）
-└── cjs.test.ts          # CJS 构建产物 smoke test（createRequire）
+└── types.test.ts        # 类型测试（expectTypeOf）
 
 npm/                     # 构建产物（自动生成，gitignored）
 docs/api/                # API 文档（自动生成）
@@ -134,7 +133,7 @@ test: add coverage
 ## 注意事项
 
 - `pnpm docs` 与 pnpm 官方命令冲突，请使用 `pnpm typedoc`
-- 构建产物输出到 `npm/` 目录（gitignored），包括 ESM（`.js` / `.d.mts`）和 CJS（`.cjs` / `.d.cts`）
+- 构建产物输出到 `npm/` 目录（gitignored），仅 ESM（`.js` / `.d.mts`）
 - 文档通过 TypeDoc 自动生成 Markdown 文件到 `docs/api/`
 - `npm/`、`docs/`、`coverage/`、`*.tsbuildinfo` 都不应提交
 - **不要**手动编辑 `.changeset/` 下已发布的 changeset

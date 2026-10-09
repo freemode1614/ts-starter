@@ -15,29 +15,29 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "./npm/index.cjs",
-  "module": "./npm/index.js",
+  "main": "./npm/index.mjs",
+  "module": "./npm/index.mjs",
   "types": "./npm/index.d.mts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
         "types": "./npm/index.d.mts",
-        "default": "./npm/index.js"
+        "default": "./npm/index.mjs"
       },
-      "require": {
-        "types": "./npm/index.d.cts",
-        "default": "./npm/index.cjs"
+      "default": {
+        "types": "./npm/index.d.mts",
+        "default": "./npm/index.mjs"
       }
     },
     "./*": {
       "import": {
         "types": "./npm/*.d.mts",
-        "default": "./npm/*.js"
+        "default": "./npm/*.mjs"
       },
-      "require": {
-        "types": "./npm/*.d.cts",
-        "default": "./npm/*.cjs"
+      "default": {
+        "types": "./npm/*.d.mts",
+        "default": "./npm/*.mjs"
       }
     }
   },
@@ -45,7 +45,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24.0.0"
   },
   "scripts": {
     "dev": "tsdown --watch",

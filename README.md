@@ -9,7 +9,7 @@
 ## 特性
 
 - 🚀 **TypeScript 5** - 最新的 TypeScript 支持，严格类型检查
-- 📦 **双模式构建** - 同时输出 ESM 和 CJS，兼容所有环境
+- 📦 **ESM 构建** - 纯 ESM 输出，配合 `"type": "module"` 提供最佳 DX
 - 🎯 **零配置工具链** - tsdown + Vitest + Biome，开箱即用
 - 🔄 **自动化发布** - Changesets + GitHub Actions，一键发布
 - 📁 **子路径导出** - 支持 `your-lib/utils` 这样的导入方式
@@ -74,9 +74,7 @@ my-lib/
 │   └── types.test.ts       # 类型测试
 ├── npm/                    # 构建输出目录（自动生成）
 │   ├── index.js            # ESM 构建产物
-│   ├── index.cjs           # CJS 构建产物
-│   ├── index.d.mts         # ESM 类型声明
-│   └── index.d.cts         # CJS 类型声明
+│   └── index.d.mts         # ESM 类型声明
 ├── .github/
 │   └── workflows/          # GitHub Actions 工作流
 │       ├── ci.yml          # CI 工作流
@@ -223,24 +221,12 @@ import { bar } from "your-lib/utils";
 {
   "exports": {
     ".": {
-      "import": {
-        "types": "./npm/index.d.mts",
-        "default": "./npm/index.js"
-      },
-      "require": {
-        "types": "./npm/index.d.cts",
-        "default": "./npm/index.cjs"
-      }
+      "types": "./npm/index.d.mts",
+      "default": "./npm/index.js"
     },
     "./*": {
-      "import": {
-        "types": "./npm/*.d.mts",
-        "default": "./npm/*.js"
-      },
-      "require": {
-        "types": "./npm/*.d.cts",
-        "default": "./npm/*.cjs"
-      }
+      "types": "./npm/*.d.mts",
+      "default": "./npm/*.js"
     }
   }
 }
@@ -261,30 +247,16 @@ import { bar } from "your-lib/utils";
 ```javascript
 import { defineConfig } from "tsdown";
 
-export default defineConfig((config) => {
-  return [
-    // ESM build
-    {
-      entry: ["./src/index.ts"],
-      outDir: "./npm",
-      format: "esm",
-      dts: true,
-      sourcemap: config.sourcemap,
-      clean: config.sourcemap,
-      treeshake: true,
-    },
-    // CJS build
-    {
-      entry: ["./src/index.ts"],
-      outDir: "./npm",
-      format: "cjs",
-      sourcemap: config.sourcemap,
-      clean: false,
-      treeshake: true,
-      shims: true,
-    },
-  ];
-});
+export default defineConfig((config) => ({
+  entry: ["./src/index.ts"],
+  outDir: "./npm",
+  format: "esm",
+  dts: true,
+  sourcemap: config.sourcemap,
+  clean: true,
+  treeshake: true,
+  shims: false,
+}));
 ```
 
 ## 贡献
