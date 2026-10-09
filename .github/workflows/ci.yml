@@ -60,9 +60,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # Build before running tests so the CJS smoke test (test/cjs.test.ts)
-      # can resolve the artifact in `npm/`. The `npm/` directory is gitignored
-      # and is produced by `pnpm build`.
+      # Build before running tests so the published-artifact smoke test
+      # (test/pack.test.ts) can pack the `npm/` directory. The `npm/`
+      # directory is gitignored and is produced by `pnpm build`.
       - name: Build
         run: pnpm build
 

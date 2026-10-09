@@ -193,7 +193,6 @@ pnpm typecheck
 - 每个 `describe` 块聚焦一个函数或一个主题
 - 同时覆盖正常路径与边界情况（空数组、零值、`null` / `undefined`、负数等）
 - 使用 `expectTypeOf`（Vitest 内置）编写类型测试，不要把类型断言写进运行时测试
-- CJS 兼容性：通过 `test/cjs.test.ts` 中的 `createRequire` 测试构建产物
 
 ### 覆盖率目标
 
