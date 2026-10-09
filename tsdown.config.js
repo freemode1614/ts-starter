@@ -1,11 +1,13 @@
 import { defineConfig } from "tsdown";
 
-export default defineConfig((config) => ({
+export default defineConfig(() => ({
   entry: ["./src/index.ts"],
   outDir: "./npm",
-  dts: true,
+  dts: {
+    sourcemap: false,
+  },
   format: "esm",
-  sourcemap: config.sourcemap,
+  sourcemap: false,
   clean: true,
   treeshake: true,
   shims: false,
