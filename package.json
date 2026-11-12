@@ -8,6 +8,7 @@
     "typescript library template"
   ],
   "license": "MIT",
+  "private": true,
   "files": [
     "npm",
     "README.md",
@@ -21,24 +22,12 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": {
-        "types": "./npm/index.d.mts",
-        "default": "./npm/index.mjs"
-      },
-      "default": {
-        "types": "./npm/index.d.mts",
-        "default": "./npm/index.mjs"
-      }
+      "types": "./npm/index.d.mts",
+      "default": "./npm/index.mjs"
     },
     "./*": {
-      "import": {
-        "types": "./npm/*.d.mts",
-        "default": "./npm/*.mjs"
-      },
-      "default": {
-        "types": "./npm/*.d.mts",
-        "default": "./npm/*.mjs"
-      }
+      "types": "./npm/*.d.mts",
+      "default": "./npm/*.mjs"
     }
   },
   "publishConfig": {
@@ -48,12 +37,14 @@
     "node": ">=24.0.0"
   },
   "scripts": {
+    "bootstrap": "node scripts/bootstrap.mjs",
     "dev": "tsdown --watch --sourcemap --dts.sourcemap",
     "build": "tsdown",
     "build:check": "attw --pack . --profile esm-only",
     "prepublishOnly": "pnpm build",
     "pretest": "pnpm build",
     "test": "vitest --watch=false",
+    "pretest:coverage": "pnpm build",
     "test:coverage": "vitest --watch=false --coverage",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
@@ -66,12 +57,13 @@
     "@biomejs/biome": "^2.5.14",
     "@changesets/cli": "^3.0.3",
     "@types/node": "^26.6.3",
+    "@vitest/coverage-istanbul": "^5.1.0",
     "lint-staged": "^17.6.0",
     "tsdown": "^0.23.0",
     "typedoc": "^0.28.20",
     "typedoc-plugin-markdown": "^4.13.1",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.2"
+    "vitest": "^5.1.0"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,mjs,cjs}": [

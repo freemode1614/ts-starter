@@ -1,7 +1,12 @@
 import { defineConfig } from "tsdown";
 
 export default defineConfig(() => ({
-  entry: ["./src/index.ts"],
+  // 每个 entry 生成一个独立的 chunk，并对应 package.json `exports` 里的一个
+  // 子路径（`your-lib/math` -> `npm/math.mjs`）。新增子路径 = 在这里加一行。
+  entry: {
+    index: "./src/index.ts",
+    math: "./src/utils/math.ts",
+  },
   outDir: "./npm",
   dts: {
     sourcemap: false,

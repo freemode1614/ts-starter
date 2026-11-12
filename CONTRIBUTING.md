@@ -19,7 +19,7 @@
 
 ### 环境要求
 
-- **Node.js** >= 20（与 `package.json` 中的 `engines` 字段一致）
+- **Node.js** >= 24（与 `package.json` 中的 `engines` 字段一致）
 - **pnpm** 11.x（仓库通过 `packageManager` 锁定）
 
 ### 本地启动
@@ -196,8 +196,18 @@ pnpm typecheck
 
 ### 覆盖率目标
 
-- 目标 **>= 90%** 行覆盖率
+- 目标 **>= 90%** 行覆盖率（`vitest.config.js` 里的 `coverage.thresholds` 是硬门槛，`pnpm test:coverage` 低于阈值会失败）
 - 100% 覆盖所有公共 API
+
+### 发布产物冒烟测试
+
+`test/pack.test.ts` 会把当前包 `npm pack` 出来，装进一个临时目录，再像真实用户一样 `import`：
+
+- 主入口能被 `import { ... } from "<包名>"` 解析
+- 每个构建产物都能通过子路径 `<包名>/<name>` 解析（对应 `exports` 里的 `"./*"` 通配符）
+- 类型声明 `.d.mts` 能被解析
+
+改动 `package.json` 的 `exports` 或 `tsdown.config.js` 的 `entry` 后，这个测试会直接告诉你有没有漏配。
 
 ## 文档
 
@@ -205,7 +215,7 @@ pnpm typecheck
 - **AGENTS.md**：面向 AI Agent 的项目背景与命令清单
 - **CONTRIBUTING.md**：本文档，面向贡献者
 - **CODE_OF_CONDUCT.md**：行为准则
-- **docs/api/**：由 `pnpm typedoc` 自动生成，不要手工编辑
+- **docs/api/**：由 `pnpm typedoc` 自动生成并提交到仓库，不要手工编辑
 
 修改公共 API 后，请同时更新：
 
@@ -232,7 +242,7 @@ pnpm changeset
 ## 发布流程
 
 1. 合并包含 changeset 的 PR 到 `main` 分支
-2. Changesets Action 自动创建版本更新 PR
+2. Changesets Action 自动创建版本更新 PR（`chore: version packages`）
 3. 合并版本更新 PR
 4. Release workflow 自动发布到 npm（需要 `NPM_TOKEN` 仓库密钥）
 

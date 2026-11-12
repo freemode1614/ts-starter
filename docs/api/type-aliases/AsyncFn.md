@@ -1,6 +1,6 @@
 [**ts-starter**](../README.md)
 
----
+***
 
 [ts-starter](../README.md) / AsyncFn
 
@@ -16,7 +16,7 @@ Represents an asynchronous function
 
 ### TArgs
 
-`TArgs` _extends_ `unknown`[] = `unknown`[]
+`TArgs` *extends* `unknown`[] = `unknown`[]
 
 ### TReturn
 

@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -21,7 +21,11 @@ const execFileAsync = promisify(execFile);
  * Runs after `pnpm build`; CI's `test` job runs build first.
  */
 
-const PACKAGE_NAME = "ts-starter";
+// Read the name from package.json so the test survives `pnpm bootstrap`.
+const PACKAGE_NAME = JSON.parse(
+  await readFile(path.resolve(import.meta.dirname, "../package.json"), "utf8")
+).name;
+
 const PROJECT_ROOT = path.resolve(import.meta.dirname, "..");
 
 interface ConsumerCtx {
@@ -67,28 +71,32 @@ afterAll(async () => {
 describe("published ESM artifact", () => {
   it("imports via the package name (default condition)", async () => {
     const mod = await import(PACKAGE_NAME);
-    expect(typeof mod.add).toBe("function");
-    expect(typeof mod.capitalize).toBe("function");
-    expect(typeof mod.chunk).toBe("function");
-    expect(typeof mod.clamp).toBe("function");
-    expect(typeof mod.isDefined).toBe("function");
-    expect(typeof mod.multiply).toBe("function");
-    expect(typeof mod.sleep).toBe("function");
+    expect(Object.keys(mod).length).toBeGreaterThan(0);
   });
 
-  it("exported functions behave like the source", async () => {
-    const { add, capitalize, chunk, clamp, isDefined, multiply } = await import(
-      PACKAGE_NAME
-    );
-    expect(add(2, 3)).toBe(5);
-    expect(capitalize("hello")).toBe("Hello");
-    expect(chunk([1, 2, 3, 4], 2)).toEqual([
-      [1, 2],
-      [3, 4],
-    ]);
-    expect(clamp(10, 0, 5)).toBe(5);
-    expect(isDefined(0)).toBe(true);
-    expect(isDefined(null)).toBe(false);
-    expect(multiply(4, 5)).toBe(20);
+  it("resolves every built entry as a subpath export", async () => {
+    // The `exports` map uses a `./*` wildcard, so each file tsdown emits
+    // must be reachable as `<pkg>/<name>`. This is what used to break:
+    // the wildcard pointed at files the build never produced.
+    const buildDir = path.join(PROJECT_ROOT, "npm");
+    const files = await readdir(buildDir);
+    const entries = files.filter((f) => f.endsWith(".mjs"));
+
+    expect(entries.length).toBeGreaterThan(0);
+
+    for (const file of entries) {
+      const name = file.replace(/\.mjs$/, "");
+      const mod = await import(`${PACKAGE_NAME}/${name}`);
+      expect(Object.keys(mod).length).toBeGreaterThan(0);
+    }
+  });
+
+  it("exports the same API as the source entry", async () => {
+    // Compares the built artifact against the source module, so this test
+    // keeps working after `pnpm bootstrap` replaced the demo exports.
+    const artifact = await import(PACKAGE_NAME);
+    const source = await import("@/index");
+
+    expect(Object.keys(artifact).sort()).toEqual(Object.keys(source).sort());
   });
 });

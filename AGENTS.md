@@ -4,10 +4,13 @@
 
 这是一个 TypeScript 库项目模板（ts-starter），用于快速创建 TypeScript 库项目。
 
+仓库本身是**脚手架模板**，不发布到 npm（`ts-starter` 这个 npm 名字已被他人占用）。
+使用者克隆后运行 `pnpm bootstrap <包名>` 生成自己的项目。
+
 ## 技术栈
 
 - **包管理**: pnpm 11.x
-- **运行时**: Node.js >= 20（由 `engines` 字段强制）
+- **运行时**: Node.js >= 24（由 `engines` 字段强制）
 - **构建工具**: tsdown（基于 Rolldown）
 - **测试框架**: Vitest（含 `expectTypeOf` 类型测试）
 - **代码规范**: Biome (lint + format) + tsc --noEmit (type check)
@@ -19,11 +22,12 @@
 
 | 命令                  | 描述                            |
 | --------------------- | ------------------------------- |
+| `pnpm bootstrap <名>` | 把模板变成新项目（改名/清示例） |
 | `pnpm dev`            | 开发模式，文件变更自动重新构建  |
 | `pnpm build`          | 生产构建，输出到 `npm/` 目录    |
 | `pnpm build:check`    | 检查包导出是否正确（attw）      |
 | `pnpm test`           | 运行单元测试和类型测试          |
-| `pnpm test:coverage`  | 运行测试并生成覆盖率报告        |
+| `pnpm test:coverage`  | 运行测试并校验覆盖率门槛        |
 | `pnpm lint`           | 运行 biome check 检查代码       |
 | `pnpm lint:fix`       | 运行 biome check 自动修复问题   |
 | `pnpm format`         | 使用 biome format 格式化代码    |
@@ -40,9 +44,13 @@ src/
 └── utils/
     └── math.ts          # 数学工具函数
 
+scripts/
+└── bootstrap.mjs        # 脚手架脚本
+
 test/
 ├── index.test.ts        # 单元测试
 ├── alias.test.ts        # 路径别名测试（@/ 别名解析）
+├── pack.test.ts         # 发布产物冒烟测试（真实 npm install + import）
 └── types.test.ts        # 类型测试（expectTypeOf）
 
 npm/                     # 构建产物（自动生成，gitignored）
@@ -51,7 +59,7 @@ docs/api/                # API 文档（自动生成）
 .github/
 ├── workflows/
 │   ├── ci.yml           # CI：lint / test / build / typecheck
-│   └── release.yml      # Release：tag 触发 changesets publish
+│   └── release.yml      # Release：changesets 开版本 PR 并发布
 ├── dependabot.yml       # Dependabot：分组 dev-dependencies
 └── ...
 
@@ -133,9 +141,9 @@ test: add coverage
 ## 注意事项
 
 - `pnpm docs` 与 pnpm 官方命令冲突，请使用 `pnpm typedoc`
-- 构建产物输出到 `npm/` 目录（gitignored），仅 ESM（`.js` / `.d.mts`）
-- 文档通过 TypeDoc 自动生成 Markdown 文件到 `docs/api/`
-- `npm/`、`docs/`、`coverage/`、`*.tsbuildinfo` 都不应提交
+- 构建产物输出到 `npm/` 目录（gitignored），仅 ESM（`.mjs` / `.d.mts`）
+- 文档通过 TypeDoc 自动生成 Markdown 文件到 `docs/api/`（**已提交**，修改公共 API 后跑 `pnpm typedoc` 重新生成，不要手工编辑）
+- `npm/`、`coverage/`、`*.tsbuildinfo` 都不应提交
 - **不要**手动编辑 `.changeset/` 下已发布的 changeset
 - **不要**直接 push 到 `main`（分支保护会拒绝），必须通过 PR
 - **不要**强制 push 到 `main`（保护规则禁止 force-push 到 main）
