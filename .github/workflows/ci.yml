@@ -60,14 +60,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # Build before running tests so the published-artifact smoke test
-      # (test/pack.test.ts) can pack the `npm/` directory. The `npm/`
-      # directory is gitignored and is produced by `pnpm build`.
-      - name: Build
-        run: pnpm build
-
+      # `test:coverage` runs the same suite plus the coverage thresholds
+      # configured in vitest.config.js, so it doubles as the quality gate.
+      # Its `pretest:coverage` hook builds first, which the published-artifact
+      # smoke test (test/pack.test.ts) needs to pack the gitignored `npm/`.
       - name: Run tests
-        run: pnpm test
+        run: pnpm test:coverage
 
   build:
     name: Build
@@ -97,6 +95,12 @@ jobs:
 
       - name: Check package exports
         run: pnpm build:check
+
+      # docs/api/ is committed, so it must match what typedoc generates.
+      - name: Check API docs are up to date
+        run: |
+          pnpm typedoc
+          git diff --exit-code docs/
 
   typecheck:
     name: Type Check

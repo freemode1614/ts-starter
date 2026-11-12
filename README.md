@@ -1,6 +1,5 @@
 # ts-starter
 
-[![npm version](https://img.shields.io/npm/v/ts-starter)](https://www.npmjs.com/package/ts-starter)
 [![CI](https://github.com/freemode1614/ts-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/freemode1614/ts-starter/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -8,12 +7,13 @@
 
 ## 特性
 
-- 🚀 **TypeScript 5** - 最新的 TypeScript 支持，严格类型检查
+- 🚀 **TypeScript 6** - 最新的 TypeScript 支持，严格类型检查
 - 📦 **ESM 构建** - 纯 ESM 输出，配合 `"type": "module"` 提供最佳 DX
 - 🎯 **零配置工具链** - tsdown + Vitest + Biome，开箱即用
+- 🤖 **一键脚手架** - `pnpm bootstrap` 自动改名、换 README、清空示例代码
 - 🔄 **自动化发布** - Changesets + GitHub Actions，一键发布
-- 📁 **子路径导出** - 支持 `your-lib/utils` 这样的导入方式
-- 🧪 **完整测试** - 单元测试 + 类型测试，覆盖率追踪
+- 📁 **子路径导出** - 支持 `your-lib/math` 这样的导入方式
+- 🧪 **完整测试** - 单元测试 + 类型测试 + 覆盖率门槛
 - 🎨 **代码规范** - Biome 统一处理 lint 和 format
 - 📖 **自动生成文档** - TypeDoc 自动生成 API 文档
 
@@ -39,25 +39,39 @@ pnpm install
 ### 初始化配置
 
 ```bash
-# 修改 package.json 中的项目名称、描述等信息
-# 修改 LICENSE 文件中的作者信息
-# 更新 README.md 为你项目的文档
+# 一步完成：改名、替换 README 占位符、更新 LICENSE、删除示例代码
+pnpm bootstrap my-lib --description "我的库" --author "你的名字"
+```
+
+`pnpm bootstrap` 会：
+
+1. 把 `package.json` 的 `name` 改成你指定的包名，并移除 `private` 标记（可正常发布到 npm）
+2. 把 README 里的 `your-lib` 占位符替换成新包名，重写「快速开始」和「API 示例」
+3. 把 LICENSE 的版权归属改成你指定的作者
+4. 删除演示用的 `src/types.ts`、`src/utils/`、`test/types.test.ts`，并写入一份可用的最小骨架
+5. 收窄 `tsdown.config.js` 的构建入口，去掉演示用的子路径
+
+执行后：
+
+```bash
+pnpm install && pnpm test   # 骨架自带测试，直接就是绿的
 ```
 
 ## 可用脚本
 
-| 命令                 | 描述                           |
-| -------------------- | ------------------------------ |
-| `pnpm dev`           | 开发模式，文件变更自动重新构建 |
-| `pnpm build`         | 生产构建，输出到 `npm/` 目录   |
-| `pnpm build:check`   | 检查包导出是否正确（attw）     |
-| `pnpm test`          | 运行单元测试和类型测试         |
-| `pnpm test:coverage` | 运行测试并生成覆盖率报告       |
-| `pnpm typecheck`     | TypeScript 类型检查            |
-| `pnpm lint`          | 运行 Biome 检查代码            |
-| `pnpm lint:fix`      | 运行 Biome 自动修复问题        |
-| `pnpm format`        | 使用 Biome 格式化代码          |
-| `pnpm typedoc`       | 生成 API 文档                  |
+| 命令                  | 描述                            |
+| --------------------- | ------------------------------- |
+| `pnpm bootstrap <名>` | 把模板变成你的项目              |
+| `pnpm dev`            | 开发模式，文件变更自动重新构建  |
+| `pnpm build`          | 生产构建，输出到 `npm/` 目录    |
+| `pnpm build:check`    | 检查包导出是否正确（attw）      |
+| `pnpm test`           | 运行单元测试和类型测试          |
+| `pnpm test:coverage`  | 运行测试并校验覆盖率门槛        |
+| `pnpm typecheck`      | TypeScript 类型检查             |
+| `pnpm lint`           | 运行 Biome 检查代码             |
+| `pnpm lint:fix`       | 运行 Biome 自动修复问题         |
+| `pnpm format`         | 使用 Biome 格式化代码           |
+| `pnpm typedoc`        | 生成 API 文档                   |
 
 ## 项目结构
 
@@ -71,16 +85,21 @@ my-lib/
 ├── test/                   # 测试目录
 │   ├── index.test.ts       # 单元测试
 │   ├── alias.test.ts       # 路径别名测试
+│   ├── pack.test.ts        # 发布产物冒烟测试
 │   └── types.test.ts       # 类型测试
+├── scripts/
+│   └── bootstrap.mjs       # 脚手架脚本（pnpm bootstrap）
 ├── npm/                    # 构建输出目录（自动生成）
-│   ├── index.js            # ESM 构建产物
-│   └── index.d.mts         # ESM 类型声明
+│   ├── index.mjs           # ESM 构建产物
+│   ├── index.d.mts         # ESM 类型声明
+│   ├── math.mjs            # 子路径构建产物
+│   └── math.d.mts
 ├── .github/
 │   └── workflows/          # GitHub Actions 工作流
 │       ├── ci.yml          # CI 工作流
 │       └── release.yml     # 自动发布工作流
 ├── docs/                   # 文档目录
-│   └── api/               # 自动生成的 API 文档
+│   └── api/                # 自动生成的 API 文档
 ├── package.json            # 项目配置
 ├── tsconfig.json           # TypeScript 配置
 ├── tsdown.config.js        # 构建配置
@@ -174,28 +193,7 @@ async function example() {
 
 本项目使用 Changesets 进行自动化版本管理和发布：
 
-### 手动发布
-
-1. **创建变更集**
-
-   ```bash
-   pnpm changeset
-   ```
-
-2. **提升版本号**
-
-   ```bash
-   pnpm changeset version
-   ```
-
-3. **发布到 npm**
-   ```bash
-   pnpm publish
-   ```
-
-### 自动发布（推荐）
-
-1. 创建包含变更集的 PR
+1. 创建包含变更集的 PR（`pnpm changeset`）
 2. 合并到 main 分支
 3. GitHub Actions 自动创建版本更新 PR
 4. 合并版本更新 PR
@@ -203,34 +201,38 @@ async function example() {
 
 需要配置 `NPM_TOKEN` 仓库密钥。
 
+> 模板仓库本身是 `private` 的（`ts-starter` 这个 npm 名字已被他人占用），
+> 所以它只会走「版本更新 PR」这一步，不会真的发布。
+> `pnpm bootstrap` 会移除 `private` 标记，你的项目就能正常发到 npm。
+
+手动发布：
+
+```bash
+pnpm changeset version   # 提升版本号
+pnpm build               # 重新构建
+pnpm changeset publish   # 发布到 npm
+```
+
 ## 模块导出
 
 模板已配置好子路径导出，支持以下导入方式：
 
 ```typescript
 // 主入口
-import { foo } from "your-lib";
+import { capitalize } from "your-lib";
 
-// 子路径入口
-import { bar } from "your-lib/utils";
+// 子路径入口（对应 src/utils/math.ts）
+import { add, multiply } from "your-lib/math";
 ```
 
-在 `package.json` 中配置：
+子路径是**真实存在**的：`tsdown.config.js` 里每个 `entry` 都会产出一个同名文件，
+`package.json` 的 `exports` 通过 `"./*"` 通配符把它们暴露出去。新增子路径只需两步：
 
-```json
-{
-  "exports": {
-    ".": {
-      "types": "./npm/index.d.mts",
-      "default": "./npm/index.js"
-    },
-    "./*": {
-      "types": "./npm/*.d.mts",
-      "default": "./npm/*.js"
-    }
-  }
-}
-```
+1. 在 `tsdown.config.js` 的 `entry` 里加一条，例如 `foo: "./src/utils/foo.ts"`
+2. 重新运行 `pnpm build`
+
+`test/pack.test.ts` 会遍历构建产物，逐个验证子路径能被真实消费者 `import`，
+所以漏配 `exports` 会在 CI 里直接失败。
 
 ## 自定义配置
 
@@ -238,7 +240,7 @@ import { bar } from "your-lib/utils";
 
 1. 在 `src/` 目录下创建新文件，例如 `src/utils.ts`
 2. 重新运行 `pnpm build`
-3. 构建产物会自动生成到 `npm/utils.js` 等
+3. 构建产物会自动生成到 `npm/utils.mjs` 等
 
 ### 修改构建配置
 
@@ -247,12 +249,15 @@ import { bar } from "your-lib/utils";
 ```javascript
 import { defineConfig } from "tsdown";
 
-export default defineConfig((config) => ({
-  entry: ["./src/index.ts"],
+export default defineConfig(() => ({
+  entry: {
+    index: "./src/index.ts",
+    math: "./src/utils/math.ts",
+  },
   outDir: "./npm",
   format: "esm",
   dts: true,
-  sourcemap: config.sourcemap,
+  sourcemap: false,
   clean: true,
   treeshake: true,
   shims: false,

@@ -2,8 +2,7 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -42,6 +41,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      # changesets/action does two things:
+      #   1. opens/updates a "Version Packages" PR when changesets are pending
+      #   2. publishes to npm when that PR is merged
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
