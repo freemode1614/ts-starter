@@ -143,6 +143,7 @@ test: add coverage
 - `pnpm docs` 与 pnpm 官方命令冲突，请使用 `pnpm typedoc`
 - 构建产物输出到 `npm/` 目录（gitignored），仅 ESM（`.mjs` / `.d.mts`）
 - 文档通过 TypeDoc 自动生成 Markdown 文件到 `docs/api/`（**已提交**，修改公共 API 后跑 `pnpm typedoc` 重新生成，不要手工编辑）
+- Biome 的 Markdown 格式化已关闭（`biome.json` 的 `markdown.formatter.enabled: false`）：本仓库的 Markdown 大多是生成物，格式化器会和生成器互相打架，并让 CI 的 docs 新鲜度检查失败
 - `npm/`、`coverage/`、`*.tsbuildinfo` 都不应提交
 - **不要**手动编辑 `.changeset/` 下已发布的 changeset
 - **不要**直接 push 到 `main`（分支保护会拒绝），必须通过 PR

@@ -106,6 +106,7 @@ pnpm dev
 - **尾逗号**：ES5 风格（数组、对象最后一个元素后保留逗号）
 - **分号**：Biome 默认强制，**不要省略分号**
 - **行宽**：建议不超过 100 字符，超出时优先重构而非换行
+- **Markdown 不自动格式化**：`biome.json` 里关了 Biome 的 Markdown 格式化器。本仓库的 Markdown 大多是生成物（`docs/api/`、`CHANGELOG.md`），格式化器会和生成器互相打架，CI 的 docs 新鲜度检查也会因此失败。Markdown 请手工保持与周围一致。
 
 ### 文件组织
 
